@@ -1,0 +1,31 @@
+# ───────────────────────────────────────────────────────────────────────────────
+# 1. Initialize Network
+# ───────────────────────────────────────────────────────────────────────────────
+
+from random import random, seed
+
+# %%
+
+
+def initialize_network(n_inputs, n_hidden, n_outputs):
+    network = []
+    hidden_layer = [
+        {"weights": [random() for i in range(n_inputs + 1)]} for i in range(n_hidden)
+    ]
+    output_layer = [
+        {"weights": [random() for i in range(n_hidden + 1)]} for i in range(n_outputs)
+    ]
+    network.append(hidden_layer)
+    network.append(output_layer)
+    return network
+
+
+# %%
+
+seed(1)
+network = initialize_network(2, 1, 2)
+for layer in network:
+    print(layer)
+
+
+# %%
